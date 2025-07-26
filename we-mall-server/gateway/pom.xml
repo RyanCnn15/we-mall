@@ -7,16 +7,20 @@
         <artifactId>we-mall</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>order</artifactId>
+    <artifactId>gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>order</name>
-    <description>order</description>
+    <name>gateway</name>
+    <description>gateway</description>
 
     <dependencies>
         <dependency>
             <groupId>com.we</groupId>
             <artifactId>common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway-server-webmvc</artifactId>
         </dependency>
     </dependencies>
 </project>
