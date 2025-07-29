@@ -7,17 +7,41 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+
     gateway:
       server:
-        webmvc:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
           routes:
-            - id: after_route
-              uri: https://www.baidu.com
+            - id: product-route
+              uri: lb://product
               predicates:
-                - Query=url, baidu
-#暴露所有端点
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: *
+                - Path=/api/product/**
+              filters:
+                - StripPrefix=2 # 去掉前缀 /api/product/，拼接到 uri 的 lb://product 后面
+            - id: coupon-route
+              uri: lb://coupon
+              predicates:
+                - Path=/api/coupon/**
+              filters:
+                - StripPrefix=2
+            - id: member-route
+              uri: lb://member
+              predicates:
+                - Path=/api/member/**
+              filters:
+                - StripPrefix=2
+            - id: order-route
+              uri: lb://order
+              predicates:
+                - Path=/api/order/**
+              filters:
+                - StripPrefix=2
+            - id: ware-route
+              uri: lb://ware
+              predicates:
+                - Path=/api/ware/**
+              filters:
+                - StripPrefix=2

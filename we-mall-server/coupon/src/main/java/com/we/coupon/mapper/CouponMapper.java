@@ -1,8 +1,7 @@
 package com.we.coupon.mapper;
 
-import com.we.coupon.entity.Coupon;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import com.we.coupon.entity.Coupon;
 
 /**
  * @author ryan
